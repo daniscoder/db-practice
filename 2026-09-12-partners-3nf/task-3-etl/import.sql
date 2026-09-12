@@ -22,12 +22,12 @@
 -- ------------------------------------------------------------
 -- ВАРИАНТ Б. Клиентский \copy (работает из psql без прав суперпользователя)
 -- ------------------------------------------------------------
--- Пути относительные: psql запускается из папки практики
--- (той, где лежат sql/ и data/). Порядок обязателен — сначала
--- справочники, иначе FK у deliveries не на что ссылаться.
--- \copy partners   (partner_id, company_name, inn, contact_email, phone, rating)         FROM 'data/partners_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
--- \copy products   (product_id, product_name)                                            FROM 'data/products_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
--- \copy deliveries (sale_id, partner_id, product_id, sale_date, quantity, total_amount)  FROM 'data/deliveries_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- CSV лежат рядом с этим файлом, поэтому путь — просто имя: psql
+-- запускается из task-3-etl/. Порядок обязателен — сначала справочники,
+-- иначе FK у deliveries не на что ссылаться.
+-- \copy partners   (partner_id, company_name, inn, contact_email, phone, rating)         FROM 'partners_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- \copy products   (product_id, product_name)                                            FROM 'products_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+-- \copy deliveries (sale_id, partner_id, product_id, sale_date, quantity, total_amount)  FROM 'deliveries_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 
 -- ------------------------------------------------------------
 -- ВАРИАНТ В. Прямые INSERT — если COPY недоступен
