@@ -1,0 +1,21 @@
+# дампы и бэкапы — в репозиторий кладём только текстовый SQL
+*.backup
+*.dump
+*.tar
+
+# временное
+*.tmp
+*.log
+*~
+.DS_Store
+Thumbs.db
+
+# редакторы
+.vscode/
+.idea/
+
+# python, если пишем скрипты подготовки данных
+__pycache__/
+*.pyc
+.venv/
+venv/
