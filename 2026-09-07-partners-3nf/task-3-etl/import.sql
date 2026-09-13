@@ -1,5 +1,5 @@
 -- ============================================================
--- import.sql — загрузка очищенных данных + проверка
+-- import.sql - загрузка очищенных данных + проверка
 -- ============================================================
 
 -- ------------------------------------------------------------
@@ -22,15 +22,15 @@
 -- ------------------------------------------------------------
 -- ВАРИАНТ Б. Клиентский \copy (работает из psql без прав суперпользователя)
 -- ------------------------------------------------------------
--- CSV лежат рядом с этим файлом, поэтому путь — просто имя: psql
--- запускается из task-3-etl/. Порядок обязателен — сначала справочники,
+-- CSV лежат рядом с этим файлом, поэтому путь - просто имя: psql
+-- запускается из task-3-etl/. Порядок обязателен - сначала справочники,
 -- иначе FK у deliveries не на что ссылаться.
 -- \copy partners   (partner_id, company_name, inn, contact_email, phone, rating)         FROM 'partners_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 -- \copy products   (product_id, product_name)                                            FROM 'products_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 -- \copy deliveries (sale_id, partner_id, product_id, sale_date, quantity, total_amount)  FROM 'deliveries_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 
 -- ------------------------------------------------------------
--- ВАРИАНТ В. Прямые INSERT — если COPY недоступен
+-- ВАРИАНТ В. Прямые INSERT - если COPY недоступен
 --            или если импорт делается через мастер DBeaver,
 --            этот блок можно не выполнять.
 -- ------------------------------------------------------------
@@ -54,8 +54,8 @@ VALUES
     (3, 2, DATE '2026-03-25', 150, 13500.00);
 
 -- ------------------------------------------------------------
--- Если данные грузились через COPY с явными id — синхронизируем
--- счётчики IDENTITY, иначе следующий INSERT упадёт на дубле ключа.
+-- Если данные грузились через COPY с явными id - синхронизируем
+-- счетчики IDENTITY, иначе следующий INSERT упадет на дубле ключа.
 -- ------------------------------------------------------------
 SELECT setval(pg_get_serial_sequence('partners',   'partner_id'), COALESCE(MAX(partner_id), 1)) FROM partners;
 SELECT setval(pg_get_serial_sequence('products',   'product_id'), COALESCE(MAX(product_id), 1)) FROM products;
