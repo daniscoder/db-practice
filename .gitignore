@@ -14,8 +14,11 @@ Thumbs.db
 .vscode/
 .idea/
 
-# python, если пишем скрипты подготовки данных
+# python
 __pycache__/
 *.pyc
 .venv/
 venv/
+.pytest_cache/
+.coverage
+htmlcov/
