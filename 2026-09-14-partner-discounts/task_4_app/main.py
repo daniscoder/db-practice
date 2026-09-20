@@ -7,8 +7,8 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
-import db
-from main_window import MainWindow
+from task_2_database import db
+from task_3_ui.main_window import MainWindow
 
 
 def load_partners() -> list[db.Partner]:

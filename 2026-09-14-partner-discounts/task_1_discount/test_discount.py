@@ -5,7 +5,7 @@
 
 import pytest
 
-from discount import calculate_partner_discount
+from task_1_discount.discount import calculate_partner_discount
 
 
 @pytest.mark.parametrize(

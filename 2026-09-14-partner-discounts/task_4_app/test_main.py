@@ -3,7 +3,7 @@
 Автор: Danis Arslanov
 """
 
-import main
+from task_4_app import main
 
 
 def test_load_partners_reads_database(connection):

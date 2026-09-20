@@ -8,7 +8,7 @@
 
 import pytest
 
-import db
+from task_2_database import db
 
 EXPECTED_TOTALS = {
     "Быстрый Путь": (10_000, 5),

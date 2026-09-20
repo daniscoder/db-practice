@@ -11,8 +11,9 @@ import pytest
 # Окно в тестах строится без экрана. Задается до создания QApplication.
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-import db
 from PySide6.QtWidgets import QApplication
+
+from task_2_database import db
 
 
 @pytest.fixture(scope="session")
