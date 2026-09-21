@@ -4,11 +4,19 @@
 """
 
 import sys
+from pathlib import Path
 
 from PySide6.QtWidgets import QApplication
 
-from task_2_database import db
-from task_3_ui.main_window import MainWindow
+# Папки заданий названы по требованию практики, по-русски и с пробелами, поэтому
+# пакетами Python они быть не могут. Модули соседних заданий подключаются через
+# пути поиска: каждая папка «Задание ...» добавляется в sys.path.
+PRACTICE_DIR = Path(__file__).resolve().parent.parent
+for task_dir in sorted(PRACTICE_DIR.glob("Задание *")):
+    sys.path.insert(0, str(task_dir))
+
+import db
+from main_window import MainWindow
 
 
 def load_partners() -> list[db.Partner]:

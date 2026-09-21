@@ -7,8 +7,8 @@ import psycopg
 import pytest
 from PySide6.QtWidgets import QLabel, QMessageBox
 
-from task_2_database.db import Partner, row_to_partner
-from task_3_ui.main_window import WINDOW_TITLE, MainWindow, PartnerCard, format_phone
+from db import Partner, row_to_partner
+from main_window import WINDOW_TITLE, MainWindow, PartnerCard, format_phone
 
 
 def make_partner(company_name: str, discount: int) -> Partner:

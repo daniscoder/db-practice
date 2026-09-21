@@ -1,13 +1,10 @@
 [run]
 branch = True
-source =
-    task_1_discount
-    task_2_database
-    task_3_ui
-    task_4_app
+source = .
 # Меряем покрытие кода программы, а не самих тестов.
 omit =
     */test_*.py
+    */conftest.py
 
 [report]
 show_missing = True

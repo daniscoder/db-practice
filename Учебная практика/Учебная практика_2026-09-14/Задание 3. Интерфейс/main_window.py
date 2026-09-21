@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from task_2_database.db import Partner
+from db import Partner
 
 RESOURCES_DIR = Path(__file__).resolve().parent / "resources"
 WINDOW_TITLE = "CRM: Список партнеров и скидок"

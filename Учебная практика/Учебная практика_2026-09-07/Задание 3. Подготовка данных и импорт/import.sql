@@ -23,8 +23,8 @@
 -- ВАРИАНТ Б. Клиентский \copy (работает из psql без прав суперпользователя)
 -- ------------------------------------------------------------
 -- CSV лежат рядом с этим файлом, поэтому путь - просто имя: psql
--- запускается из task-3-etl/. Порядок обязателен - сначала справочники,
--- иначе FK у deliveries не на что ссылаться.
+-- запускается из папки этого задания. Порядок обязателен - сначала
+-- справочники, иначе FK у deliveries не на что ссылаться.
 -- \copy partners   (partner_id, company_name, inn, contact_email, phone, rating)         FROM 'partners_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 -- \copy products   (product_id, product_name)                                            FROM 'products_clean.csv'   WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
 -- \copy deliveries (sale_id, partner_id, product_id, sale_date, quantity, total_amount)  FROM 'deliveries_clean.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')

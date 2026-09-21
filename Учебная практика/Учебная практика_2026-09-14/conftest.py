@@ -4,6 +4,8 @@
 """
 
 import os
+import sys
+from pathlib import Path
 
 import psycopg
 import pytest
@@ -11,9 +13,15 @@ import pytest
 # Окно в тестах строится без экрана. Задается до создания QApplication.
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
+# Модули лежат в папках заданий с русскими именами и пробелами, пакетами Python
+# эти папки быть не могут. Каждая папка «Задание ...» добавляется в sys.path.
+PRACTICE_DIR = Path(__file__).resolve().parent
+for task_dir in sorted(PRACTICE_DIR.glob("Задание *")):
+    sys.path.insert(0, str(task_dir))
+
 from PySide6.QtWidgets import QApplication
 
-from task_2_database import db
+import db
 
 
 @pytest.fixture(scope="session")
