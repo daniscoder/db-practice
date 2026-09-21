@@ -1,0 +1,18 @@
+[run]
+branch = True
+source = .
+# Меряем покрытие кода программы, а не самих тестов. Последние три строки -
+# встроенный в shiboken6.abi3.dll код PySide6: он выполняется под условными
+# именами, и coverage при запуске из этой папки принимает их за ее файлы.
+omit =
+    */test_*.py
+    */conftest.py
+    */pyscript
+    */signature_bootstrap.py
+    */shibokensupport/*
+
+[report]
+show_missing = True
+# Строка запуска выполняется только при старте файла как программы.
+exclude_also =
+    if __name__ == .__main__.:
