@@ -10,10 +10,12 @@ from PySide6.QtWidgets import QApplication
 
 # Папки заданий названы по требованию практики, по-русски и с пробелами, поэтому
 # пакетами Python они быть не могут. Модули соседних заданий подключаются через
-# пути поиска: каждая папка «Задание ...» добавляется в sys.path.
+# пути поиска: каждая папка задания добавляется в sys.path, служебные каталоги
+# (.idea, __pycache__ и подобные) пропускаются.
 PRACTICE_DIR = Path(__file__).resolve().parent.parent
-for task_dir in sorted(PRACTICE_DIR.glob("Задание *")):
-    sys.path.insert(0, str(task_dir))
+for task_dir in sorted(PRACTICE_DIR.iterdir()):
+    if task_dir.is_dir() and not task_dir.name.startswith((".", "_")):
+        sys.path.insert(0, str(task_dir))
 
 import db
 from main_window import MainWindow

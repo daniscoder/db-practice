@@ -14,10 +14,12 @@ import pytest
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 # Модули лежат в папках заданий с русскими именами и пробелами, пакетами Python
-# эти папки быть не могут. Каждая папка «Задание ...» добавляется в sys.path.
+# эти папки быть не могут. Каждая папка задания добавляется в sys.path,
+# служебные каталоги (.idea, __pycache__ и подобные) пропускаются.
 PRACTICE_DIR = Path(__file__).resolve().parent
-for task_dir in sorted(PRACTICE_DIR.glob("Задание *")):
-    sys.path.insert(0, str(task_dir))
+for task_dir in sorted(PRACTICE_DIR.iterdir()):
+    if task_dir.is_dir() and not task_dir.name.startswith((".", "_")):
+        sys.path.insert(0, str(task_dir))
 
 from PySide6.QtWidgets import QApplication
 
