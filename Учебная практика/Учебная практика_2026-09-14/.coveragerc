@@ -8,6 +8,11 @@ omit =
 
 [report]
 show_missing = True
+# PySide6 выполняет встроенный в shiboken6.abi3.dll код под условными именами
+# (pyscript, signature_bootstrap.py, shibokensupport/...). При запуске из папки
+# практики coverage принимает их за файлы этой папки и не находит на диске.
+# Код без файла на диске в отчет не попадает.
+ignore_errors = True
 # Строка запуска выполняется только при старте файла как программы.
 exclude_also =
     if __name__ == .__main__.:
