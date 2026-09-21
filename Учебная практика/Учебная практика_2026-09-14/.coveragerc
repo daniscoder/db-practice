@@ -1,18 +1,18 @@
 [run]
 branch = True
 source = .
-# Меряем покрытие кода программы, а не самих тестов.
+# Меряем покрытие кода программы, а не самих тестов. Последние три строки -
+# встроенный в shiboken6.abi3.dll код PySide6: он выполняется под условными
+# именами, и coverage при запуске из этой папки принимает их за ее файлы.
 omit =
     */test_*.py
     */conftest.py
+    */pyscript
+    */signature_bootstrap.py
+    */shibokensupport/*
 
 [report]
 show_missing = True
-# PySide6 выполняет встроенный в shiboken6.abi3.dll код под условными именами
-# (pyscript, signature_bootstrap.py, shibokensupport/...). При запуске из папки
-# практики coverage принимает их за файлы этой папки и не находит на диске.
-# Код без файла на диске в отчет не попадает.
-ignore_errors = True
 # Строка запуска выполняется только при старте файла как программы.
 exclude_also =
     if __name__ == .__main__.:
