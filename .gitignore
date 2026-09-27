@@ -22,3 +22,6 @@ venv/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# журнал ошибок приложения, пишется при каждом запуске
+app.log
